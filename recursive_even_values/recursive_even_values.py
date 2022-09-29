@@ -1,8 +1,11 @@
-def recursive_even_values(values):
-    if len(values) > 1:
-        middle_index = int(len(values) / 2)
-        recursive_even_values(values[:middle_index])
-        recursive_even_values(values[middle_index:])
-    elif values[0] % 2 == 0:
-        print(values[0], end=' ')
+def recursive_even_values(values, low, high):
+    while high - low > 1:
+        middle = low + int((high - low) / 2)
+        recursive_even_values(values, low, middle)
+        low = middle
+    if values[low] % 2 == 0:
+        print(values[low], end=' ')
 
+
+def print_even_values(values):
+    recursive_even_values(values, 0, len(values))

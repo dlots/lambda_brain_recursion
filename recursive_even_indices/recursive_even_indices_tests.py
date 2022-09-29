@@ -1,16 +1,17 @@
 import unittest
 import io
 import contextlib
-from recursive_even_indices import recursive_even_indices
+from recursive_even_indices import even_indices
 
 
-class TestRecursiveEvenValues(unittest.TestCase):
-    def test_recursive_even_values(self):
+class TestRecursiveEvenIndices(unittest.TestCase):
+    def test_recursive_even_indices(self):
         stdout = io.StringIO()
         with contextlib.redirect_stdout(stdout):
-            recursive_even_indices(['even' if i % 2 == 0 else 'odd' for i in range(50000)])
+            even_indices(['even' if i % 2 == 0 else 'odd' for i in range(50000)])
         values = stdout.getvalue().split(sep=' ')
         values.pop()
+        self.assertEqual(len(values), 25000)
         for value in values:
             self.assertEqual(value, 'even')
 

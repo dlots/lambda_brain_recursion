@@ -1,11 +1,11 @@
-def recursive_even_indices(values, starts_with_even=True):
-    if len(values) > 2:
-        middle_index = int(len(values) / 2)
-        recursive_even_indices(values[:middle_index], starts_with_even)
-        recursive_even_indices(values[middle_index:], (middle_index % 2 == 0) == starts_with_even)
-    elif len(values) == 1 and starts_with_even:
-        print(values[0], end=' ')
-    elif len(values) == 2 and starts_with_even:
-        print(values[0], end=' ')
-    elif len(values) == 2 and not starts_with_even:
-        print(values[1], end=' ')
+def recursive_even_indices(values, low, high):
+    while high - low > 1:
+        middle = low + int((high - low) / 2)
+        recursive_even_indices(values, low, middle)
+        low = middle
+    if low % 2 == 0:
+        print(values[low], end=' ')
+
+
+def even_indices(values):
+    recursive_even_indices(values, 0, len(values))
