@@ -1,10 +1,9 @@
 def recursive_even_values(values, low, high):
-    while high - low > 1:
-        middle = low + int((high - low) / 2)
-        recursive_even_values(values, low, middle)
-        low = middle
+    if low >= high:
+        return
     if values[low] % 2 == 0:
         print(values[low], end=' ')
+    recursive_even_values(values, low + 1, high)
 
 
 def print_even_values(values):

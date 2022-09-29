@@ -7,7 +7,7 @@ from recursive_even_values import print_even_values
 
 class TestRecursiveEvenValues(unittest.TestCase):
     def test_recursive_even_values(self):
-        high = 1000000
+        high = 970
         in_values = list(range(high))
         random.shuffle(in_values)
         stdout = io.StringIO()
